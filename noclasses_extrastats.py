@@ -4,7 +4,45 @@ import argparse
 import re
 import json
 
-' some global variables '
+' function to parse through array of lines '
+def placeInDict(mainPlayer, otherPlayer, damageNum, damageDict):
+	if mainPlayer[0] in damageDict:
+		if otherPlayer[0] in damageDict[mainPlayer[0]]['players']:
+			damageDict[mainPlayer[0]]['players'][otherPlayer[0]]['da'] += damageNum
+		else:
+			damageDict[mainPlayer[0]]['players'].update({
+					otherPlayer[0] : {
+						'da' : damageNum,
+						'pdata' : {
+							'team' : otherPlayer[3],
+							'steamid' : otherPlayer[2],
+							'playernum' : otherPlayer[1]
+						}
+					}
+				})
+	else:
+		damageDict.update({
+			mainPlayer[0] : {
+				'players' : {
+					otherPlayer[0] : {
+						'da' : damageNum,
+						'pdata' : {
+							'team' : otherPlayer[3],
+							'steamid' : otherPlayer[2],
+							'playernum' : otherPlayer[1]
+						}
+					}
+				},
+				'pdata' : {
+					'team' : mainPlayer[3],
+					'steamid' : mainPlayer[2],
+					'playernum' : mainPlayer[1]
+				}
+			}
+		})
+
+
+' some variables '
 damageG = dict()
 damageR = dict()
 inRound = False
@@ -43,79 +81,14 @@ for l in data:
 
 		top = temp[0].translate(None, ">").split("<")
 		bottom = temp[2].translate(None, ">").split("<")
-		'top = temp[0].split("<")[1::2].split(">")[1::2]'
-		'bottom = temp[2].split("<")[1::2].split(">")[1::2]'
 		
-		if top[0] in damageG:
-			if bottom[0] in damageG[top[0]]['players']:
-				damageG[top[0]]['players'][bottom[0]]['da'] += int(temp[3])
-			else:
-				damageG[top[0]]['players'].update({
-					bottom[0] : {
-						'da' : int(temp[3]),
-						'pdata' : {
-							'team' : bottom[3],
-							'steamid' : bottom[2],
-							'playernum' : bottom[1]
-						}
-					}
-				})
-		else:
-			damageG.update({
-				top[0] : {
-					'players' : {
-						bottom[0] : {
-							'da' : int(temp[3]),
-							'pdata' : {
-								'team' : bottom[3],
-								'steamid' : bottom[2],
-								'playernum' : bottom[1]
-							}
-						}
-					},
-					'pdata' : {
-						'team' : top[3],
-						'steamid' : top[2],
-						'playernum' : top[1]
-					}
-				}
-			})
+		placeInDict(top, bottom, int(temp[3]), damageG)
+		placeInDict(bottom, top, int(temp[3]), damageR)
+
+' sorting by value '
+' for play in damageG: '
 
 
-		if bottom[0] in damageR:
-			if top[0] in damageR[bottom[0]]['players']:
-				damageR[bottom[0]]['players'][top[0]]['da'] += int(temp[3])
-			else:
-				damageR[bottom[0]]['players'].update({
-					top[0] : {
-						'da' : int(temp[3]),
-						'pdata' : {
-							'team' : top[3],
-							'steamid' : top[2],
-							'playernum' : top[1]
-						}
-					}
-				})
-		else:
-			damageR.update({
-				bottom[0] : {
-					'players' : {
-						top[0] : {
-							'da' : int(temp[3]),
-							'pdata' : {
-								'team' : top[3],
-								'steamid' : top[2],
-								'playernum' : top[1]
-							}
-						}
-					},
-					'pdata' : {
-						'team' : bottom[3],
-						'steamid' : bottom[2],
-						'playernum' : bottom[1]
-					}
-				}
-			})
 
 ' log the file to XML, to be parsed by PHP '
 print json.dumps([['damage_given', damageG], ['damage_received', damageR]])
