@@ -3,8 +3,7 @@
 
 
 ## How it works
-> Python Part:
->
+###### Python Part:
 > 1.) Requires the log file's location as a command line argument
 >
 > 2.) Parses through the log, saves each line as an element of an array/list, & closes the log file
@@ -14,10 +13,8 @@
 >	* Will only account for damage dealt bewtween "Round_Start" and "Round_Win" conditions
 >
 > 4.) Serializes the python dictionaries for damaged received and damage given via json.dumps()
->
->
-> PHP Part:
->
+
+###### PHP Part:
 > 1.) Uses a $_GET variable to get the log file's name
 >
 > 2.) Invokes python script via shell_exec()
@@ -30,7 +27,7 @@
 ## JSON Structure
 ###### There are 2 versions of extrastats.py: *noclasses/extrastats.py* and *extrastats.py*. Their structure differs a bit as *noclasses/extrastats.py* does not require as much detailed data as *extrastats.py*:
 
-> ###### *noclasses/extrastats.py* structure:
+###### *noclasses/extrastats.py* structure:
 	[ 
 		[ damage_given : 
 			{ 
@@ -81,9 +78,9 @@
 			}
 		]
 	]
->
->
-> ###### *extrastats.py* structure:
+
+
+###### *extrastats.py* structure:
 	*coming soon*
 
 ## Example
