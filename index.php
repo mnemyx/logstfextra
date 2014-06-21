@@ -11,8 +11,8 @@
 		$logloc = "logs/" . $_GET["log"] . ".log";
 
 		if (file_exists($logloc)) {
+			$execstr = (isset($_GET["classes"]) && $_GET["classes"] == "false") ? '/usr/bin/python noclasses_extrastats.py ' . $logloc : '/usr/bin/python extrastats.py ' . $logloc;
 
-			$execstr = '/usr/bin/python extrastats.py ' . $logloc;
 			//var_dump(utf8_encode(shell_exec($execstr)), true);
 			$data = json_decode(shell_exec($execstr), true);
 

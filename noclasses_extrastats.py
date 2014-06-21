@@ -13,7 +13,6 @@ inRound = False
 a = re.compile(".*triggered \"damage\" against.*")
 b = re.compile(".*Round_Start.*")
 c = re.compile(".*Round_Win.*")
-d = re.compilse(".*changed role to.*")
 
 ' parses command line argument '
 parser = argparse.ArgumentParser()
