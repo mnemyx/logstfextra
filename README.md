@@ -11,6 +11,10 @@
 > 4. Serializes the python dictionaries for damaged received and damage given via json.dumps()
 
 
+## Example
+> ###### [Link](http://mnemyx.net/tfstats/index.php?log=l0620012)
+
+
 ###### PHP Part:
 > 1. Uses a $_GET variable to get the log file's name
 > 2. Invokes python script via shell_exec()
@@ -19,7 +23,7 @@
 
 
 ## JSON Structure
-###### There are 2 versions of extrastats.py: *noclasses/extrastats.py* and *extrastats.py*. Their structure differs a bit as *noclasses/extrastats.py* does not require as much detailed data as *extrastats.py*:
+###### There are 2 versions of extrastats.py: *noclasses/extrastats.py* and *extrastats.py*. Their structures differ a bit as *noclasses/extrastats.py* does not require as much detailed data as *extrastats.py*:
 
 ###### *noclasses/extrastats.py* structure:
 	[ 
@@ -77,13 +81,11 @@
 ###### *extrastats.py* structure:
 	*coming soon*
 
-## Example
-> *coming soon*
-
 ## Latest Update
 ###### Version 0.1.0, 6/21/2014
 > 1. Without class-specific damage received/dealt - done.
-> 2. Need to work on: class-specific damage received/dealt, CSS.
+> 2. Need to work on: class-specific damage received/dealt, CSS. 
+> 3. Current issues: special characters in username. Unicode is not PHP friendly at all.
 
 ## Questions/Issues
 > Preferably, create a [new issue here](https://github.com/mnemyx/logstfextra/issues/new). That way I can keep track of them, resolve them, and match commits to them.
