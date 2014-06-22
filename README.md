@@ -170,7 +170,7 @@
 
 ## Latest Update
 ###### 6/21/2014
-> 1. Everything is pretty much done except.
+> Everything is pretty much done. Yay!
 
 ## Questions/Issues
 > Preferably, [create a new post here](https://github.com/mnemyx/logstfextra/issues/new). That way I can keep track of them, resolve them, and match commits to them.
