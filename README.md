@@ -31,22 +31,23 @@
 	[ 
 		[ damage_given : 
 			{ 
-				*player_name* : 
+				*STEAM_0:#:########* : 
 					{
+						total_da : *total damage amt*,
 						pdata : 
 							{
 								team : *Red|Blue*,
-								steamid : *STEAM_0:#:########*,
-								playernum : *#*
+								pname : *player_name*,
+								pnum : *#*
 							}
 						players : {
-							*player_name* : {
+							*STEAM_0:#:########* : {
 								da : *damage amount*,
 								pdata : 
 									{
 										team : *Red|Blue*,
-										steamid : *STEAM_0:#:########*,
-										playernum : *#*
+										pname : *player_name*,
+										pnum : *#*
 									}
 							}
 						}
@@ -55,22 +56,23 @@
 		],
 		[ damage_received : 
 			{ 
-				*player_name* : 
+				*STEAM_0:#:########* : 
 					{
+						total_da : *total damage amt*,
 						pdata : 
 							{
 								team : *Red|Blue*,
-								steamid : *STEAM_0:#:########*,
-								playernum : *#*
+								pname : *player_name*,
+								pnum : *#*
 							}
 						players : {
-							*player_name* : {
+							*STEAM_0:#:########* : {
 								da : *damage amount*,
 								pdata : 
 									{
 										team : *Red|Blue*,
-										steamid : *STEAM_0:#:########*,
-										playernum : *#*
+										pname : *player_name*,
+										pnum : *#*
 									}
 							}
 						}
@@ -81,17 +83,100 @@
 
 
 ###### *extrastats.py* structure:
-	*coming soon*
+	[ 
+		[ damage_given : 
+			{ 
+				*STEAM_0:#:########* : 
+					{	
+						total_da : *total damage amt*,
+						pdata : 
+							{
+								team : *Red|Blue*,
+								pname : *player_name*,
+								pnum : *#*
+							},
+						classes : 
+							{
+								*class* : 
+								{
+									total_da : *total damage as class*,
+									players : 
+										{
+											*STEAM_0:#:########* : 
+												{
+													total_da : *total damage to/from player*,
+													pdata : 
+														{
+															team : *Red|Blue*,
+															pname : *player_name*,
+															pnum : *#*
+														}
+													classes : {
+														*class* : 
+														{
+															da : *damage to/from player in that class*
+														}
+													}
+												}		
+
+										}
+								}
+							}
+					}
+			}
+		],
+		[ damage_received : 
+			{ 
+				*STEAM_0:#:########* : 
+					{	
+						total_da : *total damage amt*,
+						pdata : 
+							{
+								team : *Red|Blue*,
+								pname : *player_name*,
+								pnum : *#*
+							},
+						classes : 
+							{
+								*class* : 
+								{
+									total_da : *total damage as class*,
+									players : 
+										{
+											*STEAM_0:#:########* : 
+												{
+													total_da : *total damage to/from player*,
+													pdata : 
+														{
+															team : *Red|Blue*,
+															pname : *player_name*,
+															pnum : *#*
+														}
+													classes : {
+														*class* : 
+														{
+															da : *damage to/from player in that class*
+														}
+													}
+												}		
+
+										}
+								}
+							}
+					}
+			}
+		]
+	]
 
 ## Latest Update
-###### Version 0.1.0, 6/21/2014
-> 1. Without class-specific damage received/dealt - done.
-> 2. Need to work on: class-specific damage received/dealt, CSS. 
-> 3. Current issues: special characters in username. Unicode is not PHP friendly at all.
+###### 6/21/2014
+> 1. Everything is pretty much done except for the issue with unicode characters.
 
 ## Questions/Issues
-> Preferably, create a [new issue here](https://github.com/mnemyx/logstfextra/issues/new). That way I can keep track of them, resolve them, and match commits to them.
+> Preferably, [create a new post here](https://github.com/mnemyx/logstfextra/issues/new). That way I can keep track of them, resolve them, and match commits to them.
 
 ## Thanks
 > 1. [Logs.tf](https://logs.tf)
 > 2. [F2's SourceMod Plugings (SupStats2)](http://teamfortress.tv/thread/13598/?page=1#post-1)
+> 3. [Bootstrap](http://getbootstrap.com/)
+> 4. [BootSwatchr](http://bootswatchr.com/)

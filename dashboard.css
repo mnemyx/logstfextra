@@ -94,3 +94,39 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+
+/*
+ * Other overrides to Bootstrap
+ */
+table.table tr td {
+	font-size: 11px !important;
+}
+table.table tr th.right {
+	text-align: right;
+}
+
+div.panel-heading {
+	font-weight: bold;
+	font-size: 125%;
+}
+
+table.table tr.mp-class {
+	font-weight: bold;
+	font-size: 115%;
+	background-color: #f9f9f9;
+}
+
+table.table.noborder tr td {
+	border: none;
+	padding: 0px;
+	margin-bottom: 0px;
+}
+
+table.table tr td.indent1 {
+	padding-left: 35px;
+}
+
+div.main {
+	min-width: 900px !important;
+}

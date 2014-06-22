@@ -2,10 +2,9 @@
 <HEAD>
 <TITLE>Extra Stats from Logs.tf & SupStats2</TITLE>
 
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="bootstrap.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="dashboard.css">
-
 </HEAD>
 
 <BODY>
@@ -92,11 +91,14 @@
 					// printing data
 					foreach ($val[1] as $player => $stats): ?>
 					
-					<table class="table table-striped <? echo ($stats['pdata']['team'] == "Blue") ? 'bg-info' : 'bg-danger'; ?>">
+					<div class="panel panel-<? echo ($stats['pdata']['team'] == "Blue") ? 'info' : 'danger'; ?>">
+					<div class="panel-heading"><? echo $stats['pdata']['pname']; ?></div>
+					<div class="panel-body">
+					<table class="table <? echo (!$classes) ? "table-striped" : ""; ?>">
 						<thead>
 						<tr>
-							<th align="left"><? echo $stats['pdata']['pname']; ?></th>
-							<th><? echo $stats['total_da']; ?></th>
+							<th><? echo 'Total '.$type; ?></th>
+							<th class="right"><? echo $stats['total_da']; ?></th>
 						</tr>
 						</thead>
 						<tbody>
@@ -110,8 +112,8 @@
 							// printing data
 							foreach ($stats['players'] as $pname => $pstats): ?>
 								<tr>
-									<td class="indent1"><? echo $pstats['pdata']['pname']; ?></td>
-									<td><? echo $pstats['da']; ?></td>
+									<td><? echo $pstats['pdata']['pname']; ?></td>
+									<td align="right"><? echo $pstats['da']; ?></td>
 								</tr>	
 						<?	endforeach; 
 						else: // sort by the total damage per main player's class
@@ -122,9 +124,9 @@
 
 							// printing data
 							foreach ($stats['classes'] as $class => $cstats): ?>
-								<tr>
-									<td class="indent1"><? echo $class; ?></td>
-									<td><? echo $cstats['total_da']; ?></td>
+								<tr class="mp-class">
+									<td>playing as <? echo $class; ?></td>
+									<td align="right"><? echo $cstats['total_da']; ?></td>
 								</tr>
 								<? // then sort by the total damage to/from other player
 									$opsortda = array();
@@ -134,10 +136,10 @@
 
 									// printing data
 									foreach ($cstats['players'] as $opname => $opstats): ?>
-									<tr>
-										<td class="indent2"><? echo $opstats['pdata']['pname'] ?></td>
-										<td align="right"><? echo $opstats['total_da']; ?></td>
-									</tr>
+									<tr class="op-name">
+										<td class="indent1"><? echo $opstats['pdata']['pname'] ?></td>
+										<td>
+											
 									<? // last and final sort based on damage to/from o. player's class
 										$opcsortda = array();
 										foreach($opstats['classes'] as $opclass => $opcstats) 
@@ -146,15 +148,19 @@
 
 										// printing data
 										foreach ($opstats['classes'] as $opclass => $opcstats): ?>
-										<tr>
-											<td class="indent3"><? echo $opclass; ?></td>
-											<td align="right"><? echo $opcstats['da']; ?></td>
-										</tr>
-									<?	endforeach;
+											<table class="table noborder">
+												<td><? echo $opclass; ?></td>
+												<td align="right"><? echo $opcstats['da']; ?></td>
+											</tr>
+											</table>
+									<?	endforeach; ?>
+										</td>
+									</tr>
+									<?
 								endforeach;
 							endforeach;
 						endif;
-						?> </tbody></table> <?
+						?> </tbody></table> </div></div> <?
 					endforeach;
 					?> </div> <?
 				endforeach;
