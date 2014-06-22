@@ -110,7 +110,7 @@
 															team : *Red|Blue*,
 															pname : *player_name*,
 															pnum : *#*
-														}
+														},
 													classes : {
 														*class* : 
 														{
@@ -151,7 +151,7 @@
 															team : *Red|Blue*,
 															pname : *player_name*,
 															pnum : *#*
-														}
+														},
 													classes : {
 														*class* : 
 														{
@@ -170,7 +170,7 @@
 
 ## Latest Update
 ###### 6/21/2014
-> 1. Everything is pretty much done except for the issue with unicode characters.
+> 1. Everything is pretty much done except.
 
 ## Questions/Issues
 > Preferably, [create a new post here](https://github.com/mnemyx/logstfextra/issues/new). That way I can keep track of them, resolve them, and match commits to them.

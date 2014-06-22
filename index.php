@@ -2,6 +2,8 @@
 <HEAD>
 <TITLE>Extra Stats from Logs.tf & SupStats2</TITLE>
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 <link rel="stylesheet" href="bootstrap.css">
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="dashboard.css">
@@ -63,9 +65,7 @@
 			$classes = (isset($_GET["classes"]) && $_GET["classes"] == "false") ? 0 : 1;
 			$execstr = (isset($_GET["classes"]) && $_GET["classes"] == "false") ? '/usr/bin/python noclasses_extrastats.py ' . $logloc : '/usr/bin/python extrastats.py ' . $logloc;
 
-			// var_dump(utf8_encode(shell_exec($execstr)), true);
 			$data = json_decode(shell_exec($execstr), true);
-			//var_dump($data);
 
 			if (!empty($data)):
 
